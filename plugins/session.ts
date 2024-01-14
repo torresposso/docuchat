@@ -46,11 +46,13 @@ async function setSessionState(
   ctx.state.supabaseClient = supabaseClient;
 
   const response = await ctx.next();
+
   /**
    * Note: ensure that a `new Response()` with a `location` header is used when performing server-side redirects.
    * Using `Response.redirect()` will throw as its headers are immutable.
    */
   headers.forEach((value, key) => response.headers.append(key, value));
+
   return response;
 }
 
