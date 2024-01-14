@@ -7,11 +7,10 @@ export const handler: Handlers<any, State> = {
   async GET(req, ctx) {
     const url = new URL(req.url);
     const code = url.searchParams.get("code")!;
+    console.log("code is:", code);
 
-    const { data, error } = await ctx.state.supabaseClient!.auth
-      .exchangeCodeForSession(
-        code,
-      );
+    const { data, error } = await ctx.state.supabaseClient.auth
+      .exchangeCodeForSession(code);
 
     return redirect("/", 303);
   },

@@ -22,6 +22,7 @@ export const handler: Handlers<any, State> = {
           provider,
           options: {
             redirectTo: origin + "/auth/callback",
+            scopes: "profile email",
           },
         },
       );
